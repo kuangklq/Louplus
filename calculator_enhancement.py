@@ -29,7 +29,7 @@ def main():
 #    income_dict = {}
     if len(sys.argv) < 2:
         print('Perameter Error')
-        exit(-1)
+#        exit(-1)
     for arg in sys.argv[1:]:
         try:
             employee_id, income_string = arg.split(':')
