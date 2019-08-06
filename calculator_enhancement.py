@@ -32,7 +32,7 @@ def main():
         exit(-1)
     for arg in sys.argv[1:]:
         try:
-            employee_id,income_string = arg.split(':')
+            employee_id, income_string = arg.split(':')
             income = int(income_string)
         except ValueError:
             print('Parameter Error')
