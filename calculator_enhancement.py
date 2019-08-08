@@ -29,14 +29,14 @@ def main():
 #    income_dict = {}
     if len(sys.argv) < 2:
         print('Perameter Error')
-#        exit(-1)
+        sys.exit()
     for arg in sys.argv[1:]:
         try:
             employee_id, income_string = arg.split(':')
             income = int(income_string)
         except ValueError:
             print('Parameter Error')
-            exit(-1)
+            sys.exit()
         remain_income = income_calculator(income)
 #    income_dict[employee_id] = remain_income
         print('{}:{}'.format(employee_id, remain_income))
