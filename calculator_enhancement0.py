@@ -16,12 +16,14 @@ def income_calculator(income):
     social_insurance_fee = income * social_insurance_rate
     real_income = income - social_insurance_fee
     taxable_part = real_income - tax_start_point
-    for item in tax_lookup_table:
-        start_point, tax_rate, quick_subtractor = item
-        if taxable_part > start_point:
-            tax = taxable_part * tax_rate - quick_subtractor
-            return '{:.2f}'.format(real_income - tax)
-    return '{:.2f}'.format(real_income)
+    if taxable_part <= 0:
+        tax = 0
+    else:
+        for item in tax_lookup_table:
+            start_point, tax_rate, quick_subtractor = item
+            if taxable_part > start_point:
+                tax = taxable_part * tax_rate - quick_subtractor
+    return '{:.2f}'.format(real_income - tax)
 
 def main():
 #    income_dict = {}
