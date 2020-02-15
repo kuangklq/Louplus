@@ -27,14 +27,14 @@ def handle_data(input_str):
 def income_calculator(income_before_tax):
     social_insurance_fee = income_before_tax * social_insurance_rate
     taxable_part = income_before_tax - social_insurance_fee - tax_start_point    
-    if taxable_part <= 0:
-        tax = 0
-    else:
-        for tuple_ in tax_lookup_table:
-            start_point, tax_rate, quick_sub = tuple_
-            if taxable_part > start_point:
-                tax = taxable_part * tax_rate - quick_sub
-                break
+    for tuple_ in tax_lookup_table:
+        start_point, tax_rate, quick_sub = tuple_
+        if taxable_part > start_point:
+            tax = taxable_part * tax_rate - quick_sub
+            break
+        elif taxable_part <= 0:
+            tax = 0
+            break
     remain_income = income_before_tax - social_insurance_fee - tax
     return remain_income
 #    return tax, remain_income
